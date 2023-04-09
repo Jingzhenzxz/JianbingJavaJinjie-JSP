@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+    <default-config>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/jianbingjavausersystemweb?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</property>
+        <property name="user">usersystemuser</property>
+        <property name="password">your_password</property>
+        <property name="initialPoolSize">5</property>
+        <property name="minPoolSize">5</property>
+        <property name="maxPoolSize">20</property>
+        <property name="maxStatements">100</property>
+        <property name="acquireRetryAttempts">3</property>
+        <property name="acquireRetryDelay">1000</property>
+        <property name="testConnectionOnCheckout">false</property>
+        <property name="testConnectionOnCheckin">true</property>
+        <property name="idleConnectionTestPeriod">60</property>
+    </default-config>
+</c3p0-config>
