@@ -12,16 +12,13 @@
         </div>
         <form action="register" method="post">
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username" required />
+                <input type="text" name="username" id="username" required placeholder="Please input your username" />
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required />
+                <input type="password" name="password" id="password" required  placeholder="Please input your password" />
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" name="email" id="email" required />
+                <input type="text" name="email" id="email" required  placeholder="Please input your email" />
             </div>
             <button type="submit">Register</button>
         </form>

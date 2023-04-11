@@ -7,14 +7,18 @@
 <body>
     <div class="container">
         <h1>Login</h1>
+        <div class="form-group">
+            <span style="color: green">${successMessage}</span>
+        </div>
+        <div class="form-group">
+            <span style="color: red">${errorMessage}</span>
+        </div>
         <form action="login" method="post">
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username" required />
+                <input type="text" name="username" id="username" required placeholder="Please input your username" />
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required />
+                <input type="password" name="password" id="password" required placeholder="Please input your password" />
             </div>
             <button type="submit">Login</button>
         </form>

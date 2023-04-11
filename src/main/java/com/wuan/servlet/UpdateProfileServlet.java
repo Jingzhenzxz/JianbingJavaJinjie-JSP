@@ -19,23 +19,51 @@ public class UpdateProfileServlet extends HttpServlet {
 
         User currentUser = (User) request.getSession().getAttribute("currentUser");
 
-        int id = currentUser.getId();
+        if (currentUser == null) {
+            request.setAttribute("errorMessage", "Please login first.");
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
+        int currentUserId = currentUser.getId();
+        String currentUsername = currentUser.getUsername();
+        String currentPassword = currentUser.getPassword();
+        String currentEmail = currentUser.getEmail();
         String newUsername = request.getParameter("username");
         String newPassword = request.getParameter("password");
         String newEmail = request.getParameter("email");
-        User newUser = new User(id, newUsername, newPassword, newEmail);
 
-        UserDAO userDao = new UserDAO();
-        boolean success = userDao.updateUser(newUser);
+        boolean unchanged = newUsername.equals(currentUsername) && newPassword.equals(currentPassword)
+                && newEmail.equals(currentEmail);
 
-        if (success) {
-            currentUser.setUsername(newUsername);
-            currentUser.setPassword(newPassword);
-            currentUser.setEmail(newEmail);
-            request.setAttribute("successMessage", "Profile updated successfully.");
+        if (unchanged) {
+            request.getSession().setAttribute("currentUser", currentUser);
+            response.sendRedirect(request.getContextPath() + "/profile");
+            // 这里不能写 request.getRequestDispatcher("/profile.jsp").forward(request, response);，因为那样会重定向到
+            // profile.jsp 文件，而该文件的表单的 action 属性被设置为了 "updateProfile"，
+            // 这意味着表单提交后会导航到 "/updateProfile" 这个 URL。
         } else {
-            request.setAttribute("errorMessage", "Error occurred while updating profile. Please try again.");
+            User newUser = new User(currentUserId, newUsername, newPassword, newEmail);
+            UserDAO userDao = new UserDAO();
+            boolean success = userDao.updateUser(newUser);
+            if (success) {
+                request.setAttribute("successMessage", "Profile updated successfully.");
+                if (!newPassword.equals(currentPassword)) {
+                    request.getRequestDispatcher("/login.jsp").forward(request, response);
+                } else {
+                    request.getSession().setAttribute("currentUser", newUser);
+                    response.sendRedirect(request.getContextPath() + "/profile");
+                    // 这里不能写 request.getRequestDispatcher("/profile.jsp").forward(request, response);，因为那样会重定向到
+                    // profile.jsp 文件，而该文件的表单的 action 属性被设置为了 "updateProfile"，
+                    // 这意味着表单提交后会导航到 "/updateProfile" 这个 URL。
+                }
+            } else {
+                request.setAttribute("errorMessage", "Error occurred while updating profile. Please try again.");
+                response.sendRedirect(request.getContextPath() + "/profile");
+                // 这里不能写 request.getRequestDispatcher("/profile.jsp").forward(request, response);，因为那样会重定向到
+                // profile.jsp 文件，而该文件的表单的 action 属性被设置为了 "updateProfile"，
+                // 这意味着表单提交后会导航到 "/updateProfile" 这个 URL。
+            }
         }
-        request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 }

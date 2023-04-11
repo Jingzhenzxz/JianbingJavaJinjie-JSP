@@ -49,7 +49,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>UserListServlet</servlet-name>
-        <url-pattern>/userlist</url-pattern>
+        <url-pattern>/userList</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -59,6 +59,15 @@
     <servlet-mapping>
         <servlet-name>UpdateProfileServlet</servlet-name>
         <url-pattern>/updateProfile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>com.wuan.servlet.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
 
     <session-config>

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "UserListServlet", urlPatterns = {"/userlist"})
+@WebServlet(name = "UserListServlet", urlPatterns = {"/userList"})
 public class UserListServlet extends HttpServlet {
 
     @Override
@@ -20,7 +20,7 @@ public class UserListServlet extends HttpServlet {
         UserDAO userDao = new UserDAO();
         List<User> users = userDao.getAllUsers();
 
-        request.setAttribute("userList", users);
-        request.getRequestDispatcher("/userlist.jsp").forward(request, response);
+        request.setAttribute("users", users);
+        request.getRequestDispatcher("/userList.jsp").forward(request, response);
     }
 }

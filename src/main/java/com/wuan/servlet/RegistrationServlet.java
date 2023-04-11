@@ -49,8 +49,15 @@ public class RegistrationServlet extends HttpServlet {
             boolean success = userDao.createUser(user);
             if (success) {
                 // 如果成功，则将用户信息设置到 session 中，并重定向到用户个人主页。
+                // request.getSession().setAttribute() 方法与 request.setAttribute() 方法类似，
+                // 但是它将属性设置到当前会话中，而不是设置到请求中。
+                // 会话属性更适合存储需要在整个会话中跟踪的信息，而请求属性适合存储仅在当前请求中需要的信息。
                 request.getSession().setAttribute("currentUser", user);
+                request.setAttribute("successMessage", "Registration successful.");
                 response.sendRedirect(request.getContextPath() + "/profile");
+//                request.getRequestDispatcher("/profile").forward(request, response);
+//                这行代码会报错“此URL不支持Http方法POST”，因为这行代码在转发时会保持原来的请求方法，即Post方法，
+//                但UserProfileServlet中不支持Post方法。使用sendRedirect时，浏览器会发起一个新的GET请求，因此不会出现错误。
             } else {
                 // 如果失败，则将错误信息设置到 request 中，并转发到注册页面。
                 request.setAttribute("errorMessage", "Error occurred while registering. Please try again.");

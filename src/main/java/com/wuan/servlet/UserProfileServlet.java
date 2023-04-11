@@ -32,6 +32,7 @@ public class UserProfileServlet extends HttpServlet {
         } else {
             // 如果用户未登录，则重定向到登录页面。
             // getContextPath() 方法返回当前 Web 应用的上下文路径，即 /wuan。
+            request.setAttribute("errorMessage", "Please login first.");
             response.sendRedirect(request.getContextPath() + "/login");
         }
     }

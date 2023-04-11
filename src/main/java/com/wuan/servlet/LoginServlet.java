@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
         if (user != null && user.getPassword().equals(password)) {
             // getSession() 方法返回当前会话，如果当前会话不存在，则创建一个新的会话。
             request.getSession().setAttribute("currentUser", user);
+            request.setAttribute("successMessage", "Login successfully.");
             // getContextPath() 方法返回当前 Web 应用的上下文路径，即 /wuan。
             response.sendRedirect(request.getContextPath() + "/profile");
         } else {
