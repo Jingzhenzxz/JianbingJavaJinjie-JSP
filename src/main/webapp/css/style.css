@@ -29,20 +29,26 @@ h1 {
     color: #444;
 }
 
-/* 设置表单的布局、对齐方式和项目间距 */
+/* 设置表单的布局、排列方式、对齐方式和项目间距 */
 form {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* flex-direction 表示项目在主轴上的排列方式。主轴是水平的 */
+    align-items: center; /* align-items 表示项目在交叉轴上的对齐方式。交叉轴是垂直于主轴的轴 */
     gap: 20px;
 }
 
-/* 设置表单组的居中方式、布局和宽度 */
+/* 设置表单组的对齐方式、布局、排列方式和宽度 */
 .form-group {
     align-items: center;
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+/* 设置 register-link 的字体大小和上边距 */
+.register-link {
+    font-size: 0.9em;
+    margin: 0 30% 0 13.5%; /* 上右下左 */
 }
 
 /* 设置标签的字体大小、下边距和颜色 */
@@ -56,8 +62,8 @@ label {
 /* padding 是输入框中文字与边框的距离，也就是输入框的高度 */
 input {
     font-size: 1em;
+    width: 40%;
     padding: 14px;
-    width: 50%;
     border: 2px solid #ddd;
     border-radius: 8px;
 }
@@ -71,7 +77,7 @@ input::placeholder {
 button {
     font-size: 1.1em;
     padding: 10px;
-    cursor: pointer;
+    cursor: pointer; /* 光标样式指的是鼠标悬停在按钮上时的样式 */
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -79,14 +85,14 @@ button {
     transition: background-color 0.3s;
 }
 
-/* 设置删除按钮为红色 */
-button.delete-btn {
-    background-color: #dc3545;
-}
-
 /* 设置按钮悬停时的背景颜色 */
 button:hover {
     background-color: #0056b3;
+}
+
+/* 设置删除按钮为红色 */
+button.delete-btn {
+    background-color: #dc3545;
 }
 
 /* 设置删除按钮的悬停颜色 */
@@ -94,20 +100,22 @@ button.delete-btn:hover {
     background-color: #c82333;
 }
 
-/* 设置按钮组的宽度、布局、对齐方式、项目间距和上下边距 */
+/* 设置按钮组的宽度、布局、对齐方式、项目间距和上下左右的边距 */
 .button-group {
-    width: 50%;
-    display: flex;
+    width: 43.5%;
+    display: flex; /* flex 表示使用弹性布局 */
+    /* space-between 表示两端对齐，项目之间的间隔都相等。space-around 表示项目之间的间隔都相等，项目与边框的间隔是项目之间间隔的一半 */
+    /* space-evenly 表示项目之间的间隔都相等，项目与边框的间隔也相等 */
     justify-content: space-between;
-    gap: 5px;
-    margin: 20px 0;
+    gap: 5px; /* px 表示像素，gap 表示按钮之间的间隔 */
+    margin: 20px auto; /* 上下边距为 20px，左右边距为自动 */
 }
 
 /* 设置按钮组中的按钮的宽度、内边距和长度 */
 .button-group button {
     width: auto;
     padding: 10px;
-    flex-grow: 1;
+    flex-grow: 1; /* 使四个按钮长度一致 */
 }
 
 /* 设置 span 的显示方式、对齐方式和下边距 */

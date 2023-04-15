@@ -20,9 +20,11 @@
             <div class="form-group">
                 <input type="password" name="password" id="password" required placeholder="Please input your password" />
             </div>
+            <div class="register-link">
+                <p>Don't have an account? <a href="register.jsp">Register here</a></p>
+            </div>
             <button type="submit">Login</button>
         </form>
-        <p>Don't have an account? <a href="register.jsp">Register here</a></p>
     </div>
 </body>
 </html>
