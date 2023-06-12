@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 
         // 如果用户存在且密码正确，则将用户信息设置到 session 中，并重定向到用户个人主页。
         if (user != null && user.getPassword().equals(password)) {
-            // getSession() 方法返回当前会话，如果当前会话不存在，则创建一个新的会话。
+            // getSession() 方法返回当前会话，如果当前会话不存在，则创建一个新会话。
             request.getSession().setAttribute("currentUser", user);
             request.setAttribute("successMessage", "Login successfully.");
             // getContextPath() 方法返回当前 Web 应用的上下文路径，即 /wuan。

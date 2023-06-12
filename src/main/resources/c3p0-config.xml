@@ -3,8 +3,8 @@
     <default-config>
         <property name="driverClass">com.mysql.jdbc.Driver</property>
         <property name="jdbcUrl">jdbc:mysql://localhost:3306/jianbingjavausersystemweb?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</property>
-        <property name="user">usersystemuser</property>
-        <property name="password">your_password</property>
+        <property name="user">root</property>
+        <property name="password">jrR7x5dR</property>
         <property name="initialPoolSize">5</property>
         <property name="minPoolSize">5</property>
         <property name="maxPoolSize">20</property>
